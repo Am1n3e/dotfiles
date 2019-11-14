@@ -28,8 +28,11 @@ Plugin 'xolox/vim-misc'
 Plugin 'takac/vim-hardtime'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'benmills/vimux'
-" add all your plugins here (note older versions of Vundle
-" used Bundle instead of Plugin)
+Plugin 'psf/black'
+Plugin 'tyru/current-func-info.vim' 
+Plugin 'google/vim-maktaba'
+Plugin 'google/vim-coverage'
+Plugin 'google/vim-glaive'
 
 " ...
 "
@@ -38,6 +41,7 @@ let mapleader = ","
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
+call glaive#Install()
 
 " Split layout
 set splitbelow
@@ -138,10 +142,14 @@ endif
 set backspace=indent,start
 
 " Pytest
-map <Leader>t  :VimuxRunCommand("pytest -v")<CR>
-map <Leader>tc :VimuxRunCommand("pytest -v " . bufname("%"))<CR>
+map <Leader>ta  :VimuxRunCommand("pytest -v")<CR>
+map <Leader>tf :VimuxRunCommand("pytest -v " . bufname("%"))<CR>
+map <Leader>t :VimuxRunCommand("pytest -v " . bufname("%") . "::" .  cfi#format("%s", ""))<CR>
 
 " PDB
 nnoremap <Leader>b Oimport pdb; pdb.set_trace()<Esc>
+
+" Black
+autocmd BufWritePre *.py execute ':Black'
 
 syntax on
