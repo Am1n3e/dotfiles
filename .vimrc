@@ -13,7 +13,7 @@ Plugin 'gmarik/Vundle.vim'
 "Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
 Bundle 'Valloric/YouCompleteMe'
-Plugin 'nvie/vim-flake8'
+" Plugin 'nvie/vim-flake8'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
@@ -33,7 +33,10 @@ Plugin 'tyru/current-func-info.vim'
 Plugin 'google/vim-maktaba'
 Plugin 'google/vim-coverage'
 Plugin 'google/vim-glaive'
-
+Plugin 'dense-analysis/ale'
+Plugin 'majutsushi/tagbar'
+Plugin 'python-rope/ropevim'
+Plugin 'davidhalter/jedi-vim'
 " ...
 "
 let mapleader = ","
@@ -74,9 +77,9 @@ let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " Flake8
-autocmd BufWritePost *.py call flake8#Flake8()
-let g:flake8_show_in_gutter=1
-let g:flake8_show_in_file=0
+" autocmd BufWritePost *.py call flake8#Flake8()
+" let g:flake8_show_in_gutter=1
+" let g:flake8_show_in_file=0
 
 " Nerd tree
 let NERDTreeIgnore=['\.pyc$', '\~$']
@@ -148,8 +151,26 @@ map <Leader>t :VimuxRunCommand("pytest -v " . bufname("%") . "::" .  cfi#format(
 
 " PDB
 nnoremap <Leader>b Oimport pdb; pdb.set_trace()<Esc>
+nnoremap <Leader>bt Opdb.set_trace()<Esc>
+
+" Python
+map <Leader>ta  :VimuxRunCommand("python " . bufname("%"))<CR>
 
 " Black
-autocmd BufWritePre *.py execute ':Black'
+autocmd BufWritePre *.py silent! execute ':Black'
+let g:black_linelength = 120
+
+" ALE
+let g:ale_echo_msg_format = '%linter% %code%: %s'
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_enter = 0
+let g:ale_fixers = {'python': ['isort']}
+let g:ale_python_pylint_options = '--disable=line-too-long,missing-function-docstring,bad-continuation'
+
+
+let g:jedi#show_call_signatures = "0"
+
+" Highlight the serach
+set hlsearch
 
 syntax on
