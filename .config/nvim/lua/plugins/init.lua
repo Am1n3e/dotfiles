@@ -251,4 +251,6 @@ return packer.startup(function()
 
    use "Pocco81/TrueZen.nvim"
 
+   use 'christoomey/vim-tmux-navigator'
+
  end)
