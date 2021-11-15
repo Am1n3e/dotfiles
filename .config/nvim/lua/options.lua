@@ -51,7 +51,7 @@ opt.whichwrap:append "<>hl"
 g.mapleader = " " 
 
 
-g.python3_host_prog = "/usr/local/bin/python3"
+g.python3_host_prog = "/usr/local/bin/nvim_python"
 
 -- colorscheme
 vim.cmd [[colorscheme moonfly]]
