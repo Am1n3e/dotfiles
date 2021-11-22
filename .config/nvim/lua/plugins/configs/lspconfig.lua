@@ -5,8 +5,6 @@ if not present1 then
    return
 end
 
-local coq = require "coq" 
-
 local function on_attach(_, bufnr)
    local function buf_set_keymap(...)
       vim.api.nvim_buf_set_keymap(bufnr, ...)
@@ -58,17 +56,20 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
       "additionalTextEdits",
    },
 }
+
+capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
 local servers = { "pyright", "bashls", "tsserver", "dockerls", "jsonls", "yamlls" }
 
 for _, lsp in ipairs(servers) do
-   nvim_lsp[lsp].setup(coq.lsp_ensure_capabilities({
+   nvim_lsp[lsp].setup({
       on_attach = on_attach,
       capabilities = capabilities,
       -- root_dir = vim.loop.cwd,
       flags = {
          debounce_text_changes = 150,
       },
-   }))
+   })
 end
 
 -- require("anyfile").setup_luaLsp(on_attach, capabilities) -- this will be removed soon after the custom hooks PR

@@ -127,24 +127,25 @@ return packer.startup(function()
       end,
       config = override_req("lspconfig", "plugins.configs.lspconfig"),
    }
-   use {
-        'ms-jpq/coq_nvim',
-        branch= 'coq',
-        event = "VimEnter",
-        config = 'vim.cmd[[COQnow]]'
-    }
 
-    use {
-        'ms-jpq/coq.artifacts',
-        branch = 'artifacts',
-        requires={'ms-jpq/coq_nvim'}
-    }
+   
 
+   -- Completion
     use {
-        'ms-jpq/coq.thirdparty',
-        branch= '3p',
-        requires={'ms-jpq/coq_nvim'}
-    }
+      "hrsh7th/nvim-cmp",
+      requires = {
+        { "hrsh7th/cmp-buffer" },
+        { "hrsh7th/cmp-nvim-lsp" },
+        { "hrsh7th/cmp-path" },
+        { "hrsh7th/cmp-nvim-lua" },
+        { "ray-x/cmp-treesitter" },
+        { "L3MON4D3/LuaSnip" },
+        { "saadparwaiz1/cmp_luasnip" },
+        { "hrsh7th/cmp-cmdline" },
+        { "onsails/lspkind-nvim"},
+      },
+      config = override_req("nvim-cmp", "plugins.configs.cmp")
+  }
 
    use {
       "andymass/vim-matchup",
@@ -252,5 +253,11 @@ return packer.startup(function()
    use "Pocco81/TrueZen.nvim"
 
    use 'christoomey/vim-tmux-navigator'
+
+   use {"numToStr/FTerm.nvim",
+        setup = function()
+       require("mappings").fterm()
+     end
+    }
 
  end)

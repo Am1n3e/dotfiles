@@ -62,3 +62,6 @@ vim.g.coq_settings = {
  keymap = {jump_to_mark= '<c-p>'}
 }
 
+-- vim.opt.spell = true
+-- vim.opt.spelllang = { 'en_us' }
+

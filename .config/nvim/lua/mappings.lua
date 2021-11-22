@@ -65,6 +65,11 @@ M.vimspector = function()
   map("n", ";r", ":VimspectorReset<CR>")
 end
 
+M.fterm = function()
+    map('n', '<A-i>', '<CMD>lua require("FTerm").toggle()<CR>', opts)
+    map('t', '<A-i>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>', opts)
+end
+
 
 M.misc = function()
   -- Don't copy the replaced text after pasting in visual mode
