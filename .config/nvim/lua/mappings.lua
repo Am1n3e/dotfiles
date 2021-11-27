@@ -17,11 +17,12 @@ M.telescope = function()
    map("n", "<leader>gs", ":Telescope git_status <CR>")
    map("n", "<leader>gt", ":Telescope git_stash <CR>")
 
+   map("n", "<leader>r", ":Telescope registers <CR>")
+
    map("n", "<leader>s", "[[<Cmd>lua require'plugins.configs.telescope_utils'.grep_prompt()<CR>]]")
    map("n", "<leader>ss", ":Telescope live_grep <CR>")
    map("n", "<leader>sb", ":Telescope current_buffer_fuzzy_find <CR>")
 
-   map("n", "<leader>th", ":Telescope themes <CR>")
    map("n", "<leader>bb", ":Telescope buffers <CR>")
 
    map("n", ";c", "[[<Cmd>lua require'plugins.configs.telescope_utils'.vimspector_configs()<CR>]]")
@@ -89,6 +90,8 @@ M.misc = function()
   -- use ESC to turn off search highlighting
   map("n", "<Esc>", ":noh <CR>")
 
+  map("i", "<C-c>", "<Esc>")
+
   -- navigation within insert mode
   map("i", "<C-h>", "<Left>")
   map("i", "<C-e>", "<End>")
@@ -114,6 +117,13 @@ M.misc = function()
   map("v", ">", ">gv")
 
   map("n", ";g", ":G<CR>")
+
+  -- Replace word under cursor in Buffer (case-sensitive)
+  map("n", ";sb", ":%s/<C-R><C-W>//gI<left><left><left>", { noremap = false })
+
+  -- Replace word under cursor on Line (case-sensitive)
+  map("n", ";sl", ":s/<C-R><C-W>//gI<left><left><left>", { noremap = false })
+
 
   -- Add Packer commands because we are not loading it at startup
   cmd "silent! command PackerClean lua require 'plugins' require('packer').clean()"

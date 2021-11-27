@@ -58,28 +58,6 @@ return packer.startup(function()
       end
     }
 
-    use { 
-        "nvim-neorg/neorg",
-        config = function()
-        require('neorg').setup {
-            -- Tell Neorg what modules to load
-            load = {
-                ["core.defaults"] = {}, -- Load all the default modules
-                ["core.norg.concealer"] = {}, -- Allows for use of icons
-                ["core.norg.dirman"] = { -- Manage your directories with Neorg
-                    config = {
-                        workspaces = {
-                            my_workspace = "~/neorg"
-                        }
-                    }
-                }
-            },
-        }
-        end,
-            -- config = override_req("neorg", "plugins.configs.neorg"),
-        requires = "nvim-lua/plenary.nvim",
-        after = "nvim-treesitter"
-    }
 
    use {
       "akinsho/bufferline.nvim",
@@ -93,9 +71,14 @@ return packer.startup(function()
    }
    use {
       "nvim-treesitter/nvim-treesitter",
-      branch = "0.5-compat",
-      event = "BufRead",
-      config = override_req("nvim_treesitter", "plugins.configs.treesitter"),
+   }
+
+   use "nvim-treesitter/playground"
+
+   use {
+       "nvim-treesitter/nvim-treesitter-textobjects",
+       event = "BufRead",
+       config = override_req("nvim_treesitter", "plugins.configs.treesitter"),
    }
 
    use {
