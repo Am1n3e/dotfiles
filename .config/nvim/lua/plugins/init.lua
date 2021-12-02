@@ -235,7 +235,7 @@ return packer.startup(function()
 
    use "Pocco81/TrueZen.nvim"
 
-   use 'christoomey/vim-tmux-navigator'
+   -- use 'christoomey/vim-tmux-navigator'
 
    use {"numToStr/FTerm.nvim",
         setup = function()
@@ -246,5 +246,11 @@ return packer.startup(function()
    use {
        "tpope/vim-fugitive"
    }
+
+   use {
+       "knubie/vim-kitty-navigator",
+       run = "cp ./*.py ~/.config/kitty/"
+   }
+
 
  end)
