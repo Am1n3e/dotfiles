@@ -54,7 +54,7 @@ g.mapleader = " "
 g.python3_host_prog = "/usr/local/bin/nvim_python"
 
 -- colorscheme
-vim.cmd [[colorscheme moonfly]]
+-- vim.cmd [[colorscheme moonfly]]
 --
 -- Coq
 vim.g.coq_settings = {

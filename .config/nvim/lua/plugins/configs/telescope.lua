@@ -58,10 +58,15 @@ telescope.setup {
          override_file_sorter = true, -- override the file sorter
          case_mode = "ignore_case", -- or "ignore_case" or "respect_case"
       },
+      bookmarks = {
+        selected_browser = "google_chrome",
+
+        url_open_command = "open",
+    },
    },
 }
 
-local extensions = { "themes", "terms", "fzf", "projects"}
+local extensions = { "themes", "terms", "fzf", "projects", "bookmarks", "neoclip", "zoxide", "repo"}
 local packer_repos = [["extensions", "telescope-fzf-native.nvim"]]
 
 

@@ -26,7 +26,13 @@ return packer.startup(function()
 
 
    -- Visual
-    use 'bluz71/vim-moonfly-colors'
+    -- use 'bluz71/vim-moonfly-colors'
+   use {
+       'EdenEast/nightfox.nvim',
+       config = function()
+            require('nightfox').load("Nightfox")
+       end
+   }
 
    use {
       "kyazdani42/nvim-web-devicons",
@@ -43,7 +49,7 @@ return packer.startup(function()
      config = function()
          require("lualine").setup{
              options = {
-                 theme = 'moonfly',
+                 theme = 'nightfox',
                  section_separators = { left = ' ', right = ' '},
                  component_separators = { left = ' ', right = ' '}
              }
@@ -205,7 +211,17 @@ return packer.startup(function()
             run = "make",
          },
          {"nvim-lua/popup.nvim"},
-         {"nvim-telescope/telescope-vimspector.nvim"}
+         {"nvim-telescope/telescope-vimspector.nvim"},
+         {"dhruvmanila/telescope-bookmarks.nvim"},
+         {
+          "AckslD/nvim-neoclip.lua",
+          config = function()
+            require('neoclip').setup()
+          end,
+        },
+        {"jvgrootveld/telescope-zoxide"},
+        {"cljoly/telescope-repo.nvim"}
+
 
       },
 

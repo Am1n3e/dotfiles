@@ -17,8 +17,6 @@ M.telescope = function()
    map("n", "<leader>gs", ":Telescope git_status <CR>")
    map("n", "<leader>gt", ":Telescope git_stash <CR>")
 
-   map("n", "<leader>r", ":Telescope registers <CR>")
-
    map("n", "<leader>s", "[[<Cmd>lua require'plugins.configs.telescope_utils'.grep_prompt()<CR>]]")
    map("n", "<leader>ss", ":Telescope live_grep <CR>")
    map("n", "<leader>sb", ":Telescope current_buffer_fuzzy_find <CR>")
@@ -37,6 +35,25 @@ M.telescope = function()
 
    map("n", "<space>e", [[<Cmd>lua require'plugins.configs.telescope_utils'.find_configs()<CR>]], { noremap = true, silent = true })
 
+   map(
+      "n",
+      "<space>b",
+      [[<Cmd>lua require('telescope').extensions.bookmarks.bookmarks()<CR>]],
+      { noremap = true, silent = true }
+   )
+   map(
+      "n",
+      "<space>n",
+      [[<Cmd>lua require('telescope').extensions.neoclip.plus()<CR>]],
+      { noremap = true, silent = true }
+   )
+   map(
+      "n",
+      "<leader>z",
+      ":lua require'telescope'.extensions.zoxide.list{results_title='Z Directories', prompt_title='Z Prompt'}<CR>",
+      { noremap = true, silent = true }
+    )
+    map("n", "<leader>r", [[<Cmd>lua require'telescope'.extensions.repo.list{}<CR>]], { noremap = true, silent = true })
 
 
 end
