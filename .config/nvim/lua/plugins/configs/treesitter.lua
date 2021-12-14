@@ -14,6 +14,18 @@ parser_configs.norg = {
 }
 
 ts_config.setup {
+ incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = "gnn",
+      node_incremental = "grn",
+      scope_incremental = "grc",
+      node_decremental = "grm",
+    },
+  },
+indent = {
+    enable = true
+  },
    ensure_installed = {
       "lua",
    },
@@ -85,3 +97,7 @@ ts_config.setup {
     },
   }
   }
+
+vim.treesitter.set_query("python", "folds", [[
+  (function_definition (block) @fold)
+]])

@@ -27,12 +27,10 @@ return packer.startup(function()
 
    -- Visual
     -- use 'bluz71/vim-moonfly-colors'
+   -- use 'marko-cerovac/material.nvim'
    use {
        'EdenEast/nightfox.nvim',
-       config = function()
-            require('nightfox').load("Nightfox")
-       end
-   }
+    }
 
    use {
       "kyazdani42/nvim-web-devicons",
@@ -48,11 +46,31 @@ return packer.startup(function()
      requires = {'kyazdani42/nvim-web-devicons', opt = true},
      config = function()
          require("lualine").setup{
-             options = {
-                 theme = 'nightfox',
-                 section_separators = { left = ' ', right = ' '},
-                 component_separators = { left = ' ', right = ' '}
-             }
+             -- options = {
+             --     theme = 'material-nvim',
+             --     section_separators = { left = ' ', right = ' '},
+             --     component_separators = { left = ' ', right = ' '}
+             -- }
+                options = {
+                    -- theme = "vscode",
+                    theme = "nightfox",
+                    -- theme = "material-nvim",
+                    component_separators = {'', ''},
+                    section_separators = {'', ''},
+                  },
+                  sections = {
+                    lualine_a = {{'filename', path = 2}},
+                    lualine_b = {'branch', {
+                      'diff',
+                      -- color_added = 'green',
+                      -- color_modified = 'yellow',
+                      -- color_removed = 'red'
+                    }},
+                    lualine_c = {},
+                    lualine_x = {},
+                    lualine_y = {},
+                    lualine_z = {}
+                  },
          }
      end
    }
@@ -64,17 +82,6 @@ return packer.startup(function()
       end
     }
 
-
-   use {
-      "akinsho/bufferline.nvim",
-      after = "nvim-web-devicons",
-     config = function()
-       require('bufferline').setup{}
-     end,
-      setup = function()
-         require("mappings").bufferline()
-      end,
-   }
    use {
       "nvim-treesitter/nvim-treesitter",
    }
@@ -182,10 +189,10 @@ return packer.startup(function()
       end,
    }
 
-  use {
-     "windwp/nvim-autopairs",
-     config = override_req("nvim_autopairs", "plugins.configs.autopairs"),
-  }
+  -- use {
+  --    "windwp/nvim-autopairs",
+  --    config = override_req("nvim_autopairs", "plugins.configs.autopairs"),
+  -- }
 
    -- Misc
    use {
@@ -246,6 +253,22 @@ return packer.startup(function()
        require("mappings").vimspector()
      end
    }
+   use {
+       'mfussenegger/nvim-dap',
+         setup = function()
+           require("mappings").nvim_dap()
+         end
+   }
+
+   use {
+     'mfussenegger/nvim-dap-python',
+      config = function()
+        require('dap-python').setup("/usr/local/bin/nvim_python")
+     end,
+     requires = {
+       'mfussenegger/nvim-dap',
+     }
+ }
 
    use 'ggandor/lightspeed.nvim'
 

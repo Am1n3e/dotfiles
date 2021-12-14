@@ -79,9 +79,19 @@ end
 
 M.vimspector = function()
   vim.g.vimspector_enable_mappings = 'HUMAN'
-  map("n", ";d", ":call vimspector#Launch()<CR>")
-  map("n", ";r", ":VimspectorReset<CR>")
+  -- map("n", ";d", ":call vimspector#Launch()<CR>")
+  -- map("n", ";r", ":VimspectorReset<CR>")
 end
+
+M.nvim_dap = function()
+  map("n", ";b", ":lua require'dap'.toggle_breakpoint()<CR>")
+  map("n", ";d", ":lua require'dap'.continue()<CR>")
+  map("n", ";s", ":lua require'dap'.step_over()<CR>")
+  map("n", ";i", ":lua require'dap'.step_into()<CR>")
+  map("n", ";p", ":lua require'dap'.repl.open()<CR>")
+  map("n", ";h", ":lua require('dap.ui.widgets').hover()<CR>")
+end
+
 
 M.fterm = function()
     map('n', '<A-i>', '<CMD>lua require("FTerm").toggle()<CR>', opts)
