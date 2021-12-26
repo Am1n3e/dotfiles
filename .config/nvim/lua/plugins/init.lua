@@ -59,17 +59,14 @@ return packer.startup(function()
                     section_separators = {'', ''},
                   },
                   sections = {
-                    lualine_a = {{'filename', path = 2}},
+                    lualine_a = {{'filename', path = 1}},
                     lualine_b = {'branch', {
                       'diff',
-                      -- color_added = 'green',
-                      -- color_modified = 'yellow',
-                      -- color_removed = 'red'
                     }},
                     lualine_c = {},
                     lualine_x = {},
                     lualine_y = {},
-                    lualine_z = {}
+                    lualine_z = {'location'}
                   },
          }
      end
@@ -218,7 +215,6 @@ return packer.startup(function()
             run = "make",
          },
          {"nvim-lua/popup.nvim"},
-         {"nvim-telescope/telescope-vimspector.nvim"},
          {"dhruvmanila/telescope-bookmarks.nvim"},
          {
           "AckslD/nvim-neoclip.lua",
@@ -248,12 +244,6 @@ return packer.startup(function()
    }
 
    use {
-     'puremourning/vimspector',
-     setup = function()
-       require("mappings").vimspector()
-     end
-   }
-   use {
        'mfussenegger/nvim-dap',
          setup = function()
            require("mappings").nvim_dap()
@@ -269,6 +259,17 @@ return packer.startup(function()
        'mfussenegger/nvim-dap',
      }
  }
+   use {
+        'theHamsta/nvim-dap-virtual-text',
+        config = function() 
+            require('nvim-dap-virtual-text').setup()
+        end,
+        requires = {
+            'mfussenegger/nvim-dap'
+        }
+    }
+
+   use 'nvim-telescope/telescope-dap.nvim'
 
    use 'ggandor/lightspeed.nvim'
 
@@ -290,6 +291,14 @@ return packer.startup(function()
        "knubie/vim-kitty-navigator",
        run = "cp ./*.py ~/.config/kitty/"
    }
+
+use {
+    'goolord/alpha-nvim',
+    requires = { 'kyazdani42/nvim-web-devicons' },
+    config = function ()
+        require'alpha'.setup(require'alpha.themes.startify'.opts)
+    end
+    }
 
 
  end)

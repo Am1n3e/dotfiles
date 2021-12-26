@@ -66,8 +66,7 @@ telescope.setup {
    },
 }
 
-local extensions = { "themes", "terms", "fzf", "projects", "bookmarks", "neoclip", "zoxide", "repo"}
-local packer_repos = [["extensions", "telescope-fzf-native.nvim"]]
+local extensions = { "themes", "terms", "fzf", "projects", "bookmarks", "neoclip", "zoxide", "repo", "dap"}
 
 
 pcall(function()
