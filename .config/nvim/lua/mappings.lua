@@ -16,6 +16,7 @@ M.telescope = function()
    map("n", "<leader>gb", ":Telescope git_bcommits <CR>")
    map("n", "<leader>gs", ":Telescope git_status <CR>")
    map("n", "<leader>gt", ":Telescope git_stash <CR>")
+   map("n", "<leader>gf",  ":Telescope git_files <CR>")
 
    map("n", "<leader>s", "[[<Cmd>lua require'plugins.configs.telescope_utils'.grep_prompt()<CR>]]")
    map("n", "<leader>ss", ":Telescope live_grep <CR>")
@@ -28,10 +29,14 @@ M.telescope = function()
    map("n", "<leader>j", ":Telescope jumplist <CR>")
    map("n", "<leader>c", ":Telescope command_history <CR>")
 
-   map("n", "<leader>ds", ":Telescope lsp_document_symbols <CR>")
+   map("n", "<leader>cs", ":Telescope lsp_document_symbols <CR>")
+   map("n", "<leader>cd", ":Telescope diagnostics bufnr=0 <CR>")
    map("n", "<leader>a", ":Telescope lsp_code_actions <CR>")
-   map("n", "<leader>dd", ":Telescope lsp_document_diagnostics <CR>")
    map("n", "<leader>m", ":Telescope marks <CR>")
+
+   map('n', '<leader>df', ':Telescope dap frames<CR>')
+   map('n', '<leader>dc', ':Telescope dap commands<CR>')
+   map('n', '<leader>db', ':Telescope dap list_breakpoints<CR>')
 
    map("n", "<space>e", [[<Cmd>lua require'plugins.configs.telescope_utils'.find_configs()<CR>]], { noremap = true, silent = true })
 

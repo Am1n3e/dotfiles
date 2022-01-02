@@ -87,12 +87,11 @@ augroup generic
   au FileType *.ya?ml setlocal shiftwidth=2 tabstop=2 softtabstop=2
   au FileType sh,zsh setlocal foldmethod=marker foldlevel=10
   au FileType markdown setlocal wrap wrapmargin=2 textwidth=140 spell
-  au FileType lua setlocal foldmethod=expr foldexpr=nvim_treesitter#foldexpr()
 augroup end
 
 augroup python
   au FileType python setlocal shiftwidth=4 tabstop=4 softtabstop=4 colorcolumn=100
-  "au FileType python setlocal foldmethod=expr foldexpr=nvim_treesitter#foldexpr()
+" au FileType python setlocal foldmethod=expr foldexpr=nvim_treesitter#foldexpr()
 augroup end
 " Frontend:
 augroup frontend
