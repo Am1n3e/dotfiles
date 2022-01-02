@@ -30,7 +30,7 @@ return packer.startup(function()
    -- use 'marko-cerovac/material.nvim'
    use {
        'EdenEast/nightfox.nvim',
-    }
+   }
 
    use {
       "kyazdani42/nvim-web-devicons",
@@ -247,12 +247,12 @@ return packer.startup(function()
       end,
    }
 
-   use {
-     'puremourning/vimspector',
-     setup = function()
-       require("mappings").vimspector()
-     end
-   }
+   -- use {
+   --   'puremourning/vimspector',
+   --   setup = function()
+   --     require("mappings").vimspector()
+   --   end
+   -- }
    use {
        'mfussenegger/nvim-dap',
          setup = function()
@@ -263,7 +263,8 @@ return packer.startup(function()
    use {
      'mfussenegger/nvim-dap-python',
       config = function()
-        require('dap-python').setup("/usr/local/bin/nvim_python")
+        require('dap-python').setup("python")
+        require('dap.ext.vscode').load_launchjs()
      end,
      requires = {
        'mfussenegger/nvim-dap',
@@ -290,6 +291,10 @@ return packer.startup(function()
        "knubie/vim-kitty-navigator",
        run = "cp ./*.py ~/.config/kitty/"
    }
+use {
+    'glacambre/firenvim',
+    run = function() vim.fn['firenvim#install'](0) end 
+}
 
 
  end)

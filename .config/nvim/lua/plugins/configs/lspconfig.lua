@@ -59,7 +59,7 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
 
 capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-local servers = { "pyright", "bashls", "tsserver", "dockerls", "jsonls", "yamlls" }
+local servers = { "pyright", "bashls", "tsserver", "dockerls", "jsonls", "yamlls", "rust_analyzer" }
 
 for _, lsp in ipairs(servers) do
    nvim_lsp[lsp].setup({

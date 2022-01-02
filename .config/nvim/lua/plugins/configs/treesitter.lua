@@ -24,7 +24,7 @@ ts_config.setup {
     },
   },
 indent = {
-    enable = true
+    enable = true, disable={"python"}
   },
    ensure_installed = {
       "lua",

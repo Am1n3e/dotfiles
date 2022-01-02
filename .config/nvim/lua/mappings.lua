@@ -84,12 +84,18 @@ M.vimspector = function()
 end
 
 M.nvim_dap = function()
-  map("n", ";b", ":lua require'dap'.toggle_breakpoint()<CR>")
-  map("n", ";d", ":lua require'dap'.continue()<CR>")
-  map("n", ";s", ":lua require'dap'.step_over()<CR>")
-  map("n", ";i", ":lua require'dap'.step_into()<CR>")
-  map("n", ";p", ":lua require'dap'.repl.open()<CR>")
-  map("n", ";h", ":lua require('dap.ui.widgets').hover()<CR>")
+    map("n", ";b", ":lua require'dap'.toggle_breakpoint()<CR>")
+    map("n", "<F12>", ":lua require'dap'.continue()<CR>")
+    map("n", ";d", ":lua require'dap'.continue()<CR>")
+    map('n', '<S-F12>', ':lua require"dap".terminate()<CR>')
+    map('n', ";t", ':lua require"dap".terminate()<CR>')
+    map("n", "<F10>", ":lua require'dap'.step_over()<CR>")
+    map("n", ";s", ":lua require'dap'.step_over()<CR>")
+    map("n", "<S-F11>", ":lua require'dap'.step_out()<CR>")
+    map("n", "<F11>", ":lua require'dap'.step_into()<CR>")
+    map("n", ";p", ":lua require'dap'.repl.open()<CR>")
+    map("n", ";h", ":lua require('dap.ui.widgets').hover()<CR>")
+    map('n', ';l', ':lua local widgets=require"dap.ui.widgets";widgets.centered_float(widgets.scopes)<CR>')
 end
 
 
