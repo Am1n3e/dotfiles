@@ -1,6 +1,7 @@
 set so=5 " Keep few lines visible when scrolling
 set incsearch
 set number relativenumber " Set relative line numbers
+set timeoutlen=400
 
 """ Editing and Reloading the Config
 set clipboard+=unnamed
@@ -9,7 +10,6 @@ nnoremap \e :e ~/.ideavimrc<CR>
 nnoremap \r :action IdeaVim.ReloadVimRc.reload<CR>
 
 "" Plugins  --------------------------------
-
 """ Surround Plugin  --------------------------------
 " Emulates vim-surround. Mappings to easily delete, change and add such surroundings in pairs
 " Basic Commands:
@@ -23,10 +23,9 @@ set surround
 
 """ argtextobj  Plugin  --------------------------------
 " Emulates argtextobj. Provides a text-object 'a' for function arguments
-" Basic Commands:
-"   daa Delete an argument
-"   cai Change an argument
-"   vai Select an argument
+" Text object
+" ai
+" aa
 " See https://www.vim.org/scripts/script.php?script_id=2699 for details
 set argtextobj
 let g:argtextobj_pairs="[:],(:),<:>"
@@ -44,12 +43,12 @@ Plug 'tommcdo/vim-exchange'
 " Emulates vim-easymotion
 " Make sure to install IdeaVim-EasyMotion and AceJump Plugins
 " Basic Commands:
-"   <leader>F Search backward
-"   <leader>f Search forward
+"   easy-motion-s Search backward
+"   easy-motion-f Search forward
 " See https://github.com/AlexPl292/IdeaVim-EasyMotion#supported-commands for details
 Plug 'easymotion/vim-easymotion'
-map <leader>F <Plug>(easymotion-s)
-map <leader>f <Plug>(easymotion-f)
+map S <Plug>(easymotion-s)
+map s <Plug>(easymotion-f)
 
 """ NERDTree plugin  --------------------------------
 " Emulates NERDTree
@@ -68,8 +67,7 @@ map <leader>f <Plug>(easymotion-f)
 "   m	    Display the NERDTree menu
 " See  https://github.com/JetBrains/ideavim/wiki/NERDTree-support for details
 set NERDTree
-map <c-e>   :NERDTree<CR>
-map <c-y> :NERDTreeFocus<CR>
+map <c-n> :NERDTreeToggle<CR>
 
 """ multiple-cursors plugin  --------------------------------
 " Emulates vim-multiple-cursors
@@ -147,10 +145,9 @@ nnoremap <c-k> <c-w>k
 nnoremap <TAB> :action PreviousTab<CR>
 nnoremap <s-TAB> :action NextTab<CR>
 
-nnoremap <Leader>e :action EditSourceInNewWindow<CR>
-
-sethandler <D-n> a:vim
-nnoremap <D-n> :action NextWindow<CR>
+"nnoremap <Leader>e :action EditSourceInNewWindow<CR>
+"sethandler <D-n> a:vim
+"nnoremap <D-n> :action NextWindow<CR>
 
 nnoremap ;q :action CloseContent<CR>
 nnoremap ;a :action CloseAllEditors<CR>
